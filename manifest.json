@@ -11,10 +11,19 @@
   "icons": {
     "128": "i128.png"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "host_permissions": [
-    "http://*/*",
-    "https://*/*"
+    "https://*.openguessr.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.openguessr.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
   ],
   "permissions": [
     "scripting",

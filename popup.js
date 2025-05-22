@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
+    if (!tab.url.includes("openguessr.com")) {
+        document.body.innerHTML = `<p class="text-center text-warning">This plugin only works with OpenGuessr.com</p>`;
+        return;
+    }
+
     await chrome.scripting.executeScript({
         target: { tabId: tab.id },
         files: ["content.js"]
